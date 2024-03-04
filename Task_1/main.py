@@ -1,5 +1,5 @@
 import os
-
+from threading import Thread
 
 def copy_file(old_path: str, new_path: str):
     with open(old_path, "br") as f:
@@ -26,4 +26,5 @@ def foo(old_dir: str, new_dir: str):
 old_path = input('Введите название папки, которую хотите скопировать:\n')
 new_path = input('Введите название новой папки:\n')
 
-foo(old_path, new_path)
+Thread(target=foo, args=(old_path, new_path)).start()
+# foo(old_path, new_path)
